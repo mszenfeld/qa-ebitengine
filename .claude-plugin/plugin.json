@@ -1,0 +1,21 @@
+{
+  "name": "qa-ebitengine",
+  "version": "0.1.0",
+  "description": "Ebitengine desktop driver for the qa plugin: /qa:run tests Ebitengine (v2.10.5 or later) games headless in the background through exp/vmhost.",
+  "author": {
+    "name": "Marian Szenfeld",
+    "email": "mef1st0@protonmail.com"
+  },
+  "homepage": "https://github.com/mszenfeld/qa-ebitengine",
+  "repository": "https://github.com/mszenfeld/qa-ebitengine",
+  "license": "Apache-2.0",
+  "keywords": [
+    "qa",
+    "ebitengine",
+    "desktop",
+    "testing"
+  ],
+  "dependencies": [
+    "qa"
+  ]
+}
