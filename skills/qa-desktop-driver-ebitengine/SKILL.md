@@ -32,7 +32,7 @@ An Ebitengine app is a main package that this driver can run when all of these h
 
 For qa's config-author:
 
-- Propose one `[qa.desktop.<name>]` table per recognised app, with `driver = "ebitengine"` and `package` as found above (omit it for `.`).
+- Propose one `[qa.desktop.<name>]` table per recognised app, with `driver = "ebitengine"` and `package` as found above, written out even when it is `"."`.
 - `args` holds only flags that the documented run command (README, Makefile) always passes. Never put per-scenario values such as seeds there; scenarios pass those through their own `**Args:**`.
 - Set `screen = [W, H]` only when the repository documents a window size the app needs; the default is 960×540.
 - Put a TOML comment above the table that cites the `go.mod` require line, the `ebiten.RunGame` (or `RunGameWithOptions`) line and the run-command line, each as `path:line`.
