@@ -2,6 +2,8 @@
 
 The Ebitengine desktop driver for the [`qa` plugin](https://github.com/AppVerk/av-marketplace/blob/master/docs/plugins/qa.md) of av-marketplace (QA desktop driver contract 1). With it installed, `/qa:run` tests Ebitengine games through DESKTOP scenarios: the game runs headless in the background, the tester injects keys, text and mouse input tick by tick and judges PNG frames and the game's log. No window takes focus, no OS input is sent and no screen is captured.
 
+qa-ebitengine is a separate extension with its own marketplace; av-marketplace does not list it. [Writing extensions](https://github.com/AppVerk/av-marketplace/blob/master/docs/extensions.md) in av-marketplace describes the driver contract.
+
 The plugin ships one skill, `qa-desktop-driver-ebitengine`, which holds the driver manifest `qa-desktop-driver.json`, the driver `driver.py`, the headless host `host/main.go` and the guide `SKILL.md` that qa's planner, config-author and tester read.
 
 ## Requirements
@@ -15,18 +17,22 @@ The plugin ships one skill, `qa-desktop-driver-ebitengine`, which holds the driv
 
 ## Install
 
-In Claude Code:
+Add both marketplaces, then install the driver. In Claude Code:
 
 ```text
-/plugin install qa-ebitengine@av-marketplace
+/plugin marketplace add AppVerk/av-marketplace
+/plugin marketplace add mszenfeld/qa-ebitengine
+/plugin install qa-ebitengine@qa-ebitengine
 ```
 
-This installs `qa` with it as a dependency.
+Claude Code installs `qa` from av-marketplace as a dependency.
 
-In OMP:
+OMP installs only the plugins you name, so install `qa` with it:
 
 ```sh
-omp plugin install qa@av-marketplace qa-ebitengine@av-marketplace
+omp plugin marketplace add AppVerk/av-marketplace
+omp plugin marketplace add mszenfeld/qa-ebitengine
+omp plugin install qa@av-marketplace qa-ebitengine@qa-ebitengine
 ```
 
 `/qa:run` and `/qa:create-plan` detect the installed driver, pass its guide to planning and configuration, and register it for each run. Configure an app under `[qa.desktop.<name>]` with `driver = "ebitengine"`; the qa documentation describes the table.
@@ -55,7 +61,7 @@ python3 -m unittest discover -s tests -v
 cd skills/qa-desktop-driver-ebitengine/host && gofmt -l . && go vet ./... && go build ./...
 ```
 
-CI (`.github/workflows/ci.yml`) runs the driver tests on Python 3.11 (Ubuntu) and checks, vets and builds the host on macOS. A release tag `v<version>` matches `version` in `.claude-plugin/plugin.json` and in `qa-desktop-driver.json`; the av-marketplace catalog pins the tag and its commit.
+CI (`.github/workflows/ci.yml`) runs the driver tests on Python 3.11 (Ubuntu) and checks, vets and builds the host on macOS. A release tag `v<version>` matches `version` in `.claude-plugin/plugin.json`, in the plugin's entry in `.claude-plugin/marketplace.json` and in `qa-desktop-driver.json`.
 
 ## License
 

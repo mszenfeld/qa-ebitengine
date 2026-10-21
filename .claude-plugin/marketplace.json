@@ -1,0 +1,22 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "qa-ebitengine",
+  "owner": {
+    "name": "Marian Szenfeld",
+    "email": "mef1st0@protonmail.com"
+  },
+  "metadata": {
+    "description": "Ebitengine desktop driver for the qa plugin of av-marketplace"
+  },
+  "allowCrossMarketplaceDependenciesOn": ["av-marketplace"],
+  "plugins": [
+    {
+      "name": "qa-ebitengine",
+      "source": "./",
+      "description": "Ebitengine desktop driver for the qa plugin: /qa:run tests Ebitengine (v2.10.5 or later) games headless in the background through exp/vmhost. Requires qa 3.1.0 or later from av-marketplace.",
+      "version": "0.1.1",
+      "category": "testing",
+      "homepage": "https://github.com/mszenfeld/qa-ebitengine"
+    }
+  ]
+}

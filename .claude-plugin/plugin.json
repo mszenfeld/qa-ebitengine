@@ -1,6 +1,6 @@
 {
   "name": "qa-ebitengine",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Ebitengine desktop driver for the qa plugin: /qa:run tests Ebitengine (v2.10.5 or later) games headless in the background through exp/vmhost.",
   "author": {
     "name": "Marian Szenfeld",
@@ -16,6 +16,6 @@
     "testing"
   ],
   "dependencies": [
-    "qa"
+    "qa@av-marketplace"
   ]
 }
